@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import './App.css'
 
-function App() {
+import ROUTES from './constants/routes'
+import Login from './pages/Login'
+import PatientsPayments from './pages/PatientsPayments'
+import Payment from './pages/Payment'
+import { AuthContext } from './context/AuthContextWrapper'
+import GlobalStyles from './GlobalStyles.style'
+
+const App = () => {
+  console.log('useContext(AuthContext)', useContext(AuthContext))
+  const { auth } = useContext(AuthContext)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <GlobalStyles />
+      {auth ? (
+        <div className="">
+          <div className="">
+            <div className="">
+                  <Routes>
+                    <Route path={'/'} element={<PatientsPayments />} />
+                  </Routes>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <Routes>
+          <Route path="*" element={<Login />} />
+          <Route path={ROUTES.PAYMENT} element={<Payment />} />
+        </Routes>
+      )}
+    </Router>
+  )
 }
 
-export default App;
+export default App

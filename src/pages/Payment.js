@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 
 import OptionCard from '../components/shared/OptionCard'
 
@@ -9,8 +9,6 @@ const Payment = () => {
   
   const { successfulPayment, setSuccessfulPayment, isPaymentMethod, setIsPaymentMethod } = useContext(GeneralContext)
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('Mercado Pago')
-  /* const [successfulPayment, setSuccessfulPayment] = useState(null)
-  const [isPaymentMethod, setIsPaymentMethod] = useState(true) */
 
   const price = '12313343255'
 

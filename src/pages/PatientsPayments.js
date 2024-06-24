@@ -32,7 +32,7 @@ const PatientsPayments = () => {
   return (
     <div className="h-screen w-screen flex flex-row">
 
-      <div className='w-64 flex flex-col relative'>
+      <div className='w-64 min-w-64 flex flex-col relative'>
         <div className='flex justify-center items-center mt-[50px]'>
           <img 
             src="https://images.pexels.com/photos/5915239/pexels-photo-5915239.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"

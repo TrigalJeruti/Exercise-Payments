@@ -7,10 +7,12 @@ import Login from './pages/Login'
 import PatientsPayments from './pages/PatientsPayments'
 import Payment from './pages/Payment'
 import { AuthContext } from './context/AuthContextWrapper'
+import { GeneralContext } from './context/GeneralContextWrapper'
 import GlobalStyles from './GlobalStyles.style'
 
 const App = () => {
   console.log('useContext(AuthContext)', useContext(AuthContext))
+  console.log('useContext(GeneralContext)', useContext(GeneralContext))
   const { auth } = useContext(AuthContext)
 
   return (
@@ -22,6 +24,7 @@ const App = () => {
             <div className="">
                   <Routes>
                     <Route path={'/'} element={<PatientsPayments />} />
+                    <Route path={ROUTES.PAYMENT} element={<Payment />} />
                   </Routes>
             </div>
           </div>
@@ -29,7 +32,6 @@ const App = () => {
       ) : (
         <Routes>
           <Route path="*" element={<Login />} />
-          <Route path={ROUTES.PAYMENT} element={<Payment />} />
         </Routes>
       )}
     </Router>

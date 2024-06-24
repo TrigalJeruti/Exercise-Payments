@@ -1,7 +1,8 @@
-import { React, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { React, useState, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 import useSession from '../hooks/useSession'
+import ROUTES from '../constants/routes'
 
 const Login = () => {
   const [failedLogin, setFailedLogin] = useState(false)
@@ -13,12 +14,22 @@ const Login = () => {
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
 
+  const { search } = useLocation()
+  const query = new URLSearchParams(search)
+  const isPaymentUrl = query.get('is')
+
+  useEffect(() => {
+    console.log('🐞🐞isPaymentUrl', isPaymentUrl)
+  }, [isPaymentUrl])
+
   // Fetch and save token
   const fetchToken = async () => {
     setLoading(true)
-
+    if (user === 'encuadrado_paciente' && password === 'enc123**456&789') {
+      login({password, user, userType: 'patient'})
+    }
     if (user === 'encuadrado' && password === 'enc123**456&789') {
-      login({password, user})
+      login({password, user, userType: 'professional'})
     } else {
       setFailedLogin(true)
       setUser('')
@@ -30,7 +41,11 @@ const Login = () => {
   const handleClick = (e) => {
     e.preventDefault()
     fetchToken()
-    navigate('/')
+    if (isPaymentUrl) {
+      navigate(ROUTES.PAYMENT)
+    } else {
+      navigate('/')
+    }
   }
 
   return (

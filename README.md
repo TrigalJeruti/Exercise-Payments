@@ -52,6 +52,10 @@ _Ejecutar repositorio_
 npm start
 ```
 
+Para ingresar a la vista de pago los links deben tener la forma:
+```
+http://localhost:3000/payment/?is=true
+```
 
 ## Construido con 🛠️
 

@@ -22,7 +22,7 @@ const PatientsPayments = () => {
               , ['Nombre', 'Correo', 'Fecha agendada', 'Servicio', 'Valor', 
                 'Estado', 'Link de pago']
                 , ['Nombre', 'Correo', 'Fecha agendada', 'Servicio', 'Valor', 
-                  'Estado', 'Link de pagoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa']]
+                  'Estado', 'Link de pago']]
 
   const handleClick = (e) => {
     e.preventDefault()

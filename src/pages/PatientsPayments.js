@@ -1,11 +1,15 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import useSession from '../hooks/useSession'
+import ROUTES from '../constants/routes'
 
 const PatientsPayments = () => {
 
   const user = localStorage.getItem("user")
   const { logout } = useSession()
+
+  const navigate = useNavigate()
 
   const headers = ['Nombre', 'Correo', 'Fecha agendada', 'Servicio', 'Valor', 
     'Estado', 'Link de pago']
@@ -46,6 +50,10 @@ const PatientsPayments = () => {
             {user}
           </span>
         </div>
+
+        <button type="button" onClick={() => {navigate(ROUTES.PAYMENT)}}>
+          Pago
+        </button>
 
         <div className='absolute bottom-5 w-full flex justify-center items-center'>
           <button

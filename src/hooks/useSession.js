@@ -1,12 +1,15 @@
 import { useContext } from 'react'
+import secureLocalStorage from 'react-secure-storage'
+
 
 import { AuthContext } from '../context/AuthContextWrapper'
 
 const useSession = () => {
-  const { setAuth } = useContext(AuthContext)
+  const { setAuth, setUserType } = useContext(AuthContext)
 
   const login = (data) => {
-    localStorage.setItem('user', data.user)
+    setUserType(data.userType)
+    secureLocalStorage.setItem('user', data.user)
     setAuth(true)
   }
   const logout = () => {
